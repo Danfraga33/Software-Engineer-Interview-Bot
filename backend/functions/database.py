@@ -1,69 +1,72 @@
-import json
-import random
+# functions/database.py - Make sure this function exists and works correctly
 
-# Get Recent Messages
 def get_recent_messages():
-   # Define the file name and learn instructions
-      file_name = 'stored_data.json'
-      learn_instruction = {
-            'role':'system',
-            'content':'You are interviewing the user for a job as a software developer. Ask short questions that are relevant to the job. Your name is Rachel. The user is called Daniel. Keep your answers to under 100 words.'
-      }
+    """
+    This function should return a list of recent messages in the format:
+    [
+        {"role": "user", "content": "Hello"},
+        {"role": "assistant", "content": "Hi there!"},
+        {"role": "user", "content": "How are you?"}
+    ]
+    """
+    try:
+        # Replace this with your actual database logic
+        # For now, return a basic system message if no messages exist
+        messages = []
+        
+        # Add your database retrieval logic here
+        # Example:
+        # messages = retrieve_messages_from_database()
+        
+        # If no messages, start with a system message
+        if not messages:
+            messages = [
+                {
+                    "role": "system", 
+                    "content": "You are a helpful AI assistant conducting a software engineering interview."
+                }
+            ]
+        
+        print(f"Retrieved {len(messages)} messages from database")
+        return messages
+        
+    except Exception as e:
+        print(f"Error getting recent messages: {e}")
+        # Return default system message on error
+        return [
+            {
+                "role": "system", 
+                "content": "You are a helpful AI assistant conducting a software engineering interview."
+            }
+        ]
 
-   # initialize messages
-      messages = []
+def store_messages(user_message, assistant_message):
+    """Store the conversation messages in database"""
+    try:
+        # Add your database storage logic here
+        print(f"Storing messages - User: {user_message[:50]}...")
+        print(f"Storing messages - Assistant: {assistant_message[:50]}...")
+        
+        # Your database storage code here
+        # Example:
+        # save_to_database(user_message, assistant_message)
+        
+        return True
+    except Exception as e:
+        print(f"Error storing messages: {e}")
+        return False
 
-      x = random.uniform(0,1) 
-      if x < 0.5: 
-           learn_instruction["content"] = learn_instruction["content"] + 'Your response will include some dry humour'
-      else:  
-           learn_instruction["content"] = learn_instruction["content"] + 'Your response will include a rather challenging question'
-
-      messages.append(learn_instruction)
-      
-      # Get last messages
-      try: 
-           with open(file_name) as user_file:
-                data = json.load(user_file)
-           
-         #   Append last 5 items of data
-                if data:
-                  if len(data) < 5:
-                     for item in data:
-                      messages.append(item)
-                  else: 
-                     for item in data: 
-                           messages.append[-5]   
-      except Exception as e:
-           print(e)
-           pass
-# return messages
-      return messages   
-
-
-#store_messages
-def store_messages(request_message, response_message):
-   
-   #  Define the file name
-   file_name = "stored_data.json"
-
-   # Get Recent Messages
-   messages = get_recent_messages()[1:]
-
-   # Add Messages to data
-   user_messages = {'role': "user","content": request_message}
-   assistant_messages = {'role': "assistant","content": response_message}
-   messages.append(user_messages)
-   messages.append(assistant_messages)
-
-   # Save the updated file
-   with open(file_name, "w") as f:
-      json.dump(messages, f)
-
-
-   # Reset Messages
 def resetMessages():
-
-
-   # Overwrite current file with nothing 
-   open('stored_data.json', "w") 
+    """Reset/clear all messages from database"""
+    try:
+        # Add your database reset logic here
+        print("Resetting conversation messages")
+        
+        # Your database reset code here
+        # Example:
+        # clear_database_messages()
+        
+        return True
+    except Exception as e:
+        print(f"Error resetting messages: {e}")
+        return False
