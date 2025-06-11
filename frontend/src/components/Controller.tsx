@@ -36,7 +36,7 @@ function Controller() {
 			formData.append('file', blob, 'myFile.wav');
 
 			const apiResponse = await axios.post(
-				'http://localhost:5175/post-audio/',
+				'https://backend-frosty-tree-5260.fly.dev/post-audio/',
 				formData,
 				{
 					headers: {

@@ -13,7 +13,7 @@ const Title = ({ setMessages }: Props) => {
 		setIsRessetting(true);
 
 		await axios
-			.get('http://localhost:8000/reset')
+			.get('https://backend-frosty-tree-5260.fly.dev/reset')
 			.then((res) => {
 				if (res.status === 200) {
 					setMessages([]);
