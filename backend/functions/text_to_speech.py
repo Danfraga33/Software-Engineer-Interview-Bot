@@ -28,8 +28,8 @@ def convert_text_to_speech(message):
         }
     }
 
-    # Define Voice (Rachel)
-    voice_rachel = 'EXAVITQu4vr4xnSDxMaL'
+ 
+    voice_sarah = 'EXAVITQu4vr4xnSDxMaL'
 
     # Constructing Headers
     headers = {
@@ -39,7 +39,7 @@ def convert_text_to_speech(message):
     }
 
     # Constructing URL
-    url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_rachel}"
+    url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_sarah}"
 
     try:
         print(f"Sending TTS request for message: {message[:50]}...")

@@ -50,9 +50,9 @@ function Controller() {
 			const audio = new Audio();
 			audio.src = createBlobUrl(responseBlob);
 
-			// Append Rachel's response
-			const rachelMessage = { sender: 'rachel', blobUrl: audio.src };
-			setMessages((prev) => [...prev, rachelMessage]);
+			// Append sarah's response
+			const sarahMessage = { sender: 'Sarah', blobUrl: audio.src };
+			setMessages((prev) => [...prev, sarahMessage]);
 
 			// Play audio
 			setIsLoading(false);
@@ -65,41 +65,37 @@ function Controller() {
 
 	return (
 		<div className="h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 flex flex-col">
-			{/* Header */}
 			<div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-10">
 				<Title setMessages={setMessages} />
 			</div>
 
-			{/* Messages Container */}
 			<div className="flex-1 overflow-y-auto px-4 py-6 pb-32">
 				<div className="max-w-4xl mx-auto space-y-6">
 					{messages?.map((audio, index) => {
-						const isRachel = audio.sender === 'rachel';
+						const isSarah = audio.sender === 'sarah';
 
 						return (
 							<div
 								key={index + audio.sender}
 								className={`flex items-start gap-3 ${
-									isRachel ? 'flex-row-reverse' : 'flex-row'
+									isSarah ? 'flex-row-reverse' : 'flex-row'
 								}`}
 							>
-								{/* Avatar */}
 								<div className="w-8 h-8 flex-shrink-0 rounded-full flex items-center justify-center text-sm font-medium">
 									<div
 										className={`w-8 h-8 rounded-full flex items-center justify-center ${
-											isRachel
+											isSarah
 												? 'bg-green-100 text-green-700'
 												: 'bg-blue-100 text-blue-700'
 										}`}
 									>
-										{isRachel ? 'R' : 'U'}
+										{isSarah ? 'R' : 'U'}
 									</div>
 								</div>
 
-								{/* Message Card */}
 								<div
 									className={`w-3/4 max-w-4xl p-4 rounded-lg shadow-sm ${
-										isRachel
+										isSarah
 											? 'bg-green-500 text-white'
 											: 'bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700'
 									}`}
@@ -107,7 +103,7 @@ function Controller() {
 									<div className="flex items-center gap-2 mb-2">
 										<span
 											className={`text-xs font-medium ${
-												isRachel
+												isSarah
 													? 'text-green-100'
 													: 'text-gray-500 dark:text-gray-400'
 											}`}
@@ -116,7 +112,7 @@ function Controller() {
 										</span>
 										<svg
 											className={`w-3 h-3 ${
-												isRachel ? 'text-green-100' : 'text-gray-400'
+												isSarah ? 'text-green-100' : 'text-gray-400'
 											}`}
 											fill="currentColor"
 											viewBox="0 0 20 20"
@@ -139,7 +135,7 @@ function Controller() {
 										controls
 										className="w-full h-8 rounded-md"
 										style={{
-											filter: isRachel ? 'invert(1) brightness(2)' : 'none',
+											filter: isSarah ? 'invert(1) brightness(2)' : 'none',
 										}}
 									/>
 								</div>
@@ -147,7 +143,6 @@ function Controller() {
 						);
 					})}
 
-					{/* Empty State */}
 					{messages.length === 0 && !isLoading && (
 						<div className="text-center py-12">
 							<div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -169,12 +164,11 @@ function Controller() {
 								Start a conversation
 							</h3>
 							<p className="text-gray-500 dark:text-gray-400">
-								Send Rachel your first voice message to get started
+								Send sarah your first voice message to get started
 							</p>
 						</div>
 					)}
 
-					{/* Loading State */}
 					{isLoading && (
 						<div className="flex items-start gap-3">
 							<div className="w-8 h-8 flex-shrink-0 rounded-full flex items-center justify-center bg-green-100 text-green-700 text-sm font-medium">
@@ -196,7 +190,7 @@ function Controller() {
 											d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
 										/>
 									</svg>
-									<span className="text-sm">Rachel is thinking...</span>
+									<span className="text-sm">sarah is thinking...</span>
 								</div>
 							</div>
 						</div>
@@ -204,7 +198,6 @@ function Controller() {
 				</div>
 			</div>
 
-			{/* Recording Controls */}
 			<div className="fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-t border-gray-200 dark:border-gray-700 p-6">
 				<div className="max-w-4xl mx-auto flex justify-center">
 					<div className="flex items-center gap-4">
