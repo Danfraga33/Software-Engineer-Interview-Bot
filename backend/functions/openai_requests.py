@@ -9,8 +9,6 @@ load_dotenv()
 openai_api_key = os.environ["OPEN_AI_KEY"]
 client = OpenAI(api_key=openai_api_key)
 
-# Open AI - Whisper
-# Convert audio to text
 def convert_audio_to_text(audio_file):
     try:
         # Updated syntax for openai>=1.0.0
