@@ -1,4 +1,13 @@
-/backend/venv
-/frontend/node_modules
+# Backend
+/backend/venv/
 /backend/.env
-/backend/__pycache__/
+/backend/**/__pycache__/
+/backend/**/*.py[cod]
+
+# Frontend
+/frontend/node_modules/
+
+# Catch all __pycache__ and .pyc just in case
+__pycache__/
+**/__pycache__/
+*.py[cod]
