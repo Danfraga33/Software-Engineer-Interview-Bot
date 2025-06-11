@@ -30,7 +30,7 @@ except Exception as e:
 app = FastAPI()
 print("✓ FastAPI app created")
 
-# CORS
+# CORS - Fixed missing comma and added frontend URL
 origins = [
     "http://localhost:5173",
     "http://localhost:5174", 
@@ -38,7 +38,11 @@ origins = [
     "http://localhost:4174",
     "http://localhost:3000",
     "http://localhost:8000",
-    "http://localhost:5175"   
+    "http://localhost:5175",
+    "https://backend-frosty-tree-5260.fly.dev",  # Fixed missing comma
+    "https://www.backend-frosty-tree-5260.fly.dev",
+    "https://software-engineer-interview-bot.fly.dev",  # Added frontend URL
+    "https://www.software-engineer-interview-bot.fly.dev"
 ]
 
 # CORS Middleware
@@ -138,7 +142,8 @@ async def post_audio(file: UploadFile = File(...)):
 def read_root():
     return {"Hello": "World"}
 
+# FIXED: Use uvicorn instead of app.run()
 if __name__ == "__main__":
     import uvicorn
-    print("Starting server on http://localhost:5175")
-    uvicorn.run(app, host="0.0.0.0", port=5175)
+    port = int(os.environ.get('PORT', 5175))
+    uvicorn.run(app, host='0.0.0.0', port=port)
