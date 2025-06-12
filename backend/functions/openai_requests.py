@@ -1,9 +1,9 @@
-from decouple import config
-import openai
 from functions.database import get_recent_messages 
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
+from decouple import AutoConfig
+config = AutoConfig()
 
 load_dotenv()
 openai_api_key = os.environ["OPEN_AI_KEY"]

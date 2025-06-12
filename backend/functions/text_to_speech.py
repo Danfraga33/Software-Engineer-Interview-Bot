@@ -1,5 +1,6 @@
 import requests
-from decouple import config
+from decouple import AutoConfig
+config = AutoConfig()
 
 # Get API key with error handling
 try:
