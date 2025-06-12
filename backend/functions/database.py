@@ -23,7 +23,7 @@ def get_recent_messages():
             messages = [
                 {
                     "role": "system", 
-                    "content": "You are a helpful AI assistant conducting a software engineering interview."
+                    "content": "Your name is Sarah, you are a helpful AI assistant conducting a software engineering interview."
                 }
             ]
         
