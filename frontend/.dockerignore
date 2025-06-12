@@ -4,3 +4,8 @@
 .env
 Dockerfile
 fly.toml
+.gitignore
+README.md
+.nyc_output
+coverage
+.vscode
